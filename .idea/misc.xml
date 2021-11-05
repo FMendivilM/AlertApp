@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/ic_contact_big.xml" value="0.2203125" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/inner_shadow_btn.xml" value="0.2203125" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/ring.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/round_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/round_edittext.xml" value="0.2203125" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_add_contact.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_contact_list.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_contact_view.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/fragment_alert.xml" value="0.14" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/fragment_contacts.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/fragment_map.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/list_contacts.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/menu/bottom_navigation.xml" value="1.4" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/menu/dropdown_menu.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

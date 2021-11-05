@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactViewActivity">
+
+
+    <ImageView
+        android:id="@+id/iv_contact_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="50dp"
+        app:srcCompat="@drawable/ic_contact_big" />
+
+    <TextView
+        android:id="@+id/tv_contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Contact name"
+        android:textSize="34sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/iv_contact_view"/>
+
+    <TextView
+        android:id="@+id/tv_numberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Phone number:"
+        android:textSize="24sp"
+        android:paddingTop="50dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_below="@id/iv_contact_view"/>
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="0123456789"
+        android:textSize="24sp"
+        android:paddingTop="50dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_below="@id/iv_contact_view"
+        android:layout_toEndOf="@id/tv_numberText"/>
+
+    <Button
+        android:id="@+id/btn_contact_view_edit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:backgroundTint="#666"
+        android:gravity="center"
+        android:text="Edit" />
+
+    <Button
+        android:id="@+id/btn_contact_view_delete"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_contact_view_edit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#666"
+        android:gravity="center"
+        android:text="Delete" />
+
+</RelativeLayout>
