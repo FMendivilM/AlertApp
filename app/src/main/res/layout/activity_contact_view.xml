@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingTop="50dp"
+        android:paddingTop="30dp"
         app:srcCompat="@drawable/ic_contact_big" />
 
     <TextView
@@ -23,19 +23,20 @@
         android:hint="Contact name"
         android:textSize="34sp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/iv_contact_view"/>
+        android:layout_below="@id/iv_contact_view"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/tv_numberText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/iv_contact_view"
         android:layout_marginTop="44dp"
-        android:text="Phone number:"
-        android:textSize="24sp"
-        android:paddingTop="50dp"
         android:paddingStart="20dp"
+        android:paddingTop="50dp"
         android:paddingEnd="20dp"
-        android:layout_below="@id/iv_contact_view"/>
+        android:text="Phone number:"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tv_number"
@@ -45,7 +46,6 @@
         android:text="0123456789"
         android:textSize="24sp"
         android:paddingTop="50dp"
-        android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:layout_below="@id/iv_contact_view"
         android:layout_toEndOf="@id/tv_numberText"/>
@@ -56,10 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="70dp"
         android:backgroundTint="#666"
         android:gravity="center"
-        android:text="Edit" />
+        android:text="Editar" />
 
     <Button
         android:id="@+id/btn_contact_view_delete"
@@ -70,6 +70,6 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="#666"
         android:gravity="center"
-        android:text="Delete" />
+        android:text="Eliminar" />
 
 </RelativeLayout>

@@ -22,16 +22,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/contactImage"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/round_edittext"
+        android:background="@drawable/round_edittext_border"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp" />
+        android:paddingEnd="20dp"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/et_add_contact_number"
@@ -39,44 +40,47 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/et_add_contact_name"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/round_edittext"
+        android:background="@drawable/round_edittext_border"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="Número telefónico"
         android:inputType="phone"
         android:minHeight="48dp"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp" />
+        android:paddingEnd="20dp"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btn_add_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/et_add_contact_number"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:elevation="3dp"
         android:fontFamily="@font/roboto"
         android:minWidth="300dp"
         android:minHeight="60dp"
         android:text="Registrar"
         android:textSize="20sp"
-        app:backgroundTint="@color/app_blue"
-        android:layout_centerHorizontal="true"/>
+        app:backgroundTint="@color/app_blue" />
 
     <Button
         android:id="@+id/btn_cancel_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_add_contact"
-        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#666"
+        android:elevation="3dp"
         android:fontFamily="@font/roboto"
         android:minWidth="200dp"
         android:minHeight="60dp"
         android:text="Cancelar"
-        android:backgroundTint="#666"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

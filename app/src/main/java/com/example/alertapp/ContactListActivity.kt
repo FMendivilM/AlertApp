@@ -20,7 +20,7 @@ class ContactListActivity : AppCompatActivity() {
 
     lateinit var contactAdapter: ContactAdapter
     lateinit var recyclerViewContacts: RecyclerView
-    lateinit var contactList: ArrayList<Contact>
+    var contactList = ArrayList<Contact>()
     lateinit var fAuth: FirebaseAuth
     lateinit var db : DatabaseReference
     lateinit var binding: ActivityContactListBinding
@@ -29,6 +29,8 @@ class ContactListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityContactListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        recyclerViewContacts = binding.recyclerViewContacts
 
         fAuth = FirebaseAuth.getInstance()
         db = Firebase.database.reference
@@ -68,8 +70,8 @@ class ContactListActivity : AppCompatActivity() {
                 for(objSnapshot:DataSnapshot in snapshot.children){
                     contactList.add(
                         Contact(
-                        objSnapshot.child("name").toString(),
-                            objSnapshot.child("number").toString())
+                        objSnapshot.child("name").value.toString(),
+                            objSnapshot.child("number").value.toString())
                     )
                 }
 
@@ -82,7 +84,6 @@ class ContactListActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
 
         })

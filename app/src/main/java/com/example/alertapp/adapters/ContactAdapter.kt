@@ -10,31 +10,22 @@ import androidx.recyclerview.widget.RecyclerView.*
 import com.example.alertapp.R
 import com.example.alertapp.entities.Contact
 
-class ContactAdapter : Adapter<ContactAdapter.ViewHolder>, View.OnClickListener{
-
+class ContactAdapter(
+    context: Context,
     var model: ArrayList<Contact>
-    var inflater: LayoutInflater
+) : Adapter<ContactAdapter.ViewHolder>(), View.OnClickListener{
+
+    var inflater: LayoutInflater = LayoutInflater.from(context)
 
     lateinit var listener : View.OnClickListener
 
-    constructor(context: Context, model:ArrayList<Contact>){
-        this.inflater = LayoutInflater.from(context)
-        this.model = model
-    }
-
     override fun onClick(v: View){
-        if(listener!=null){
-            listener.onClick(v)
-        }
+        listener.onClick(v)
     }
 
-    class ViewHolder : RecyclerView.ViewHolder{
-        lateinit var name : TextView
-        lateinit var number : TextView
-        constructor(itemView: View) : super(itemView) {
-            name = itemView.findViewById(R.id.contactName)
-            number = itemView.findViewById(R.id.contactPhone)
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var name : TextView = itemView.findViewById(R.id.contactName)
+        var number : TextView = itemView.findViewById(R.id.contactPhone)
     }
 
 

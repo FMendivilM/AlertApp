@@ -104,14 +104,12 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:foregroundTint="@color/white"
-        android:scaleX="8"
-        android:scaleY="8"
-        android:src="?android:attr/alertDialogIcon"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_alert_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
 
     <TextView
         android:id="@+id/tv_log_password_recover"

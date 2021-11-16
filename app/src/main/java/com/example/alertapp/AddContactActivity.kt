@@ -21,7 +21,7 @@ class AddContactActivity : AppCompatActivity() {
     lateinit var fAuth : FirebaseAuth
     lateinit var db : DatabaseReference
 
-    lateinit var contact: Contact
+    var contact: Contact = Contact()
     lateinit var numberAux : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
