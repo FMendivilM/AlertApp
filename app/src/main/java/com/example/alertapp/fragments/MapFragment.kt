@@ -17,6 +17,13 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.util.jar.Manifest
 
 
@@ -26,6 +33,8 @@ class MapFragment : Fragment() , OnMapReadyCallback{
     private lateinit var mView: View
     val MY_PERMISSIONS_REQUEST_CURRENT_LOCATION: Int = 1
 
+    private lateinit var fAuth: FirebaseAuth
+    private lateinit var dataBase : DatabaseReference
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -37,6 +46,9 @@ class MapFragment : Fragment() , OnMapReadyCallback{
         super.onViewCreated(view, savedInstanceState)
 
         Places.initialize(context as Context, getString(R.string.api_key))
+
+        fAuth = FirebaseAuth.getInstance()
+        dataBase = Firebase.database.reference
 
         mapView = mView.findViewById(R.id.map) as MapView
         mapView.onCreate(null)
@@ -55,7 +67,7 @@ class MapFragment : Fragment() , OnMapReadyCallback{
         map = googleMap
         enableLocation()
         map.mapType = GoogleMap.MAP_TYPE_NORMAL
-        createMapMarker(24.057729,-110.2951773)
+        alertList()
 
     }
 
@@ -117,6 +129,22 @@ class MapFragment : Fragment() , OnMapReadyCallback{
         }
     }
 
-    private fun createPolyLines(){
+    private fun alertList(){
+        dataBase.child("publicAlerts").addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    for(i in 0 until snapshot.childrenCount){
+                        val lat = snapshot.child(i.toString()).child("latitude").value as Double
+                        val long = snapshot.child(i.toString()).child("longitude").value as Double
+                        createMapMarker(lat,long)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

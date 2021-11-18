@@ -9,18 +9,18 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imageView2"
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:elevation="10dp"
-        android:src="@drawable/ring"
+        android:background="@drawable/ring"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-     <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_alert"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -30,6 +30,7 @@
         android:shadowColor="#424242"
         android:shadowDy="20"
         android:text="Alerta"
+        android:textColor="@color/white"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,6 +3,7 @@ package com.example.alertapp
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout.LayoutParams
 import android.widget.Spinner
@@ -24,7 +25,7 @@ class AlertConfigurationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlertConfigurationBinding
     val contactList = ArrayList<String>()
     val contactNumberList = ArrayList<String>()
-    val spinnerList = ArrayList<Spinner>()
+    private val spinnerList = ArrayList<Spinner>()
     private var canSendMessage = true
     private var canAccessLocation = true
 
@@ -69,7 +70,7 @@ class AlertConfigurationActivity : AppCompatActivity() {
                         binding.editTextMessage.setText(objSnapshot.child("message").value.toString())
                     }
                     binding.checkBoxLocation.isChecked = objSnapshot.child("locationPermission").value as Boolean
-                    binding.checkBoxZoneMark.isChecked = objSnapshot.child("locationPermission").value as Boolean
+                    binding.checkBoxZoneMark.isChecked = objSnapshot.child("markZonePermission").value as Boolean
 
                     binding.checkBoxMessage.isChecked = objSnapshot.child("messagePermission").value as Boolean
 
@@ -86,8 +87,22 @@ class AlertConfigurationActivity : AppCompatActivity() {
         }
 
         binding.btnSave.setOnClickListener {
-            dataBase.child("userData").child(fAuth.currentUser!!.uid).child("myAlarm").setValue(contactNumberList)
+            val contactInfo: HashMap<String, Any> = HashMap()
+            contactInfo["messagePermission"] = binding.checkBoxMessage.isChecked
+            contactInfo["locationPermission"] = binding.checkBoxLocation.isChecked
+            contactInfo["markZonePermission"] = binding.checkBoxZoneMark.isChecked
+            if(!TextUtils.isEmpty(binding.editTextMessage.text.toString())){
+                contactInfo["message"] = binding.editTextMessage.text.toString()
+            }else{
+                contactInfo["message"] = ""
+            }
+            if(contactNumberList.size > 0){
+                contactNumberList.removeAt(0)
+                contactInfo["contactsList"] = contactNumberList
+            }
+            dataBase.child("userData").child(fAuth.currentUser!!.uid).child("myAlert").setValue(contactInfo)
 
+            finish()
         }
 
     }

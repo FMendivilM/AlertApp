@@ -24,6 +24,8 @@ class RegisterActivity : AppCompatActivity() {
         val binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         fAuth = FirebaseAuth.getInstance()
         dataBase = Firebase.database.reference
 

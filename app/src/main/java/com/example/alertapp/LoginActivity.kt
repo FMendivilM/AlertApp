@@ -17,11 +17,14 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         fAuth= FirebaseAuth.getInstance()
 
         if(fAuth.currentUser != null){
             val i = Intent(applicationContext, MainActivity::class.java)
             startActivity(i)
+            finish()
         }
 
         binding.btnLogLogin.setOnClickListener {
