@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserActivity">
+
+    <ImageView
+        android:id="@+id/iv_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        app:srcCompat="@drawable/ic_account_big"
+        app:tint="@color/app_orange"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_user"
+        android:layout_centerHorizontal="true"
+        android:hint="User name"
+        android:textAlignment="center"
+        android:textColor="@color/app_blue"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_user_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Email:"
+        android:textAlignment="center"
+        android:textColor="@color/app_blue"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_email_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_user_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/tv_email"
+        android:hint="mail@mail.com"
+        android:textAlignment="center"
+        android:textColor="@color/app_blue"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_email"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Password:"
+        android:textColor="@color/app_blue"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_password_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/tv_password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:text="password"
+        android:textAlignment="center"
+        android:textColor="@color/app_blue"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_user_edit"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/switch_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/app_blue"
+        android:gravity="center"
+        android:text="Editar"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_user_delete"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/btn_user_edit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/app_blue"
+        android:text="Eliminar" />
+
+    <Switch
+        android:id="@+id/switch_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_password"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/roboto"
+        android:minHeight="48dp"
+        android:text="Hide"
+        android:textSize="25sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.alertapp
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.alertapp.databinding.ActivityLoginBinding
@@ -46,12 +47,12 @@ class LoginActivity : AppCompatActivity() {
                     val i = Intent(applicationContext, MainActivity::class.java)
                     startActivity(i)
                     Toast.makeText(applicationContext, "Sesión iniciada exitosamente", Toast.LENGTH_LONG).show()
+                    finish()
                 }else{
                     Toast.makeText(applicationContext, task.exception?.message, Toast.LENGTH_LONG).show()
+                    Log.e("a", task.exception?.message!!)
                 }
             }
-            finish()
-
         }
 
         binding.tvLogRegister.setOnClickListener {

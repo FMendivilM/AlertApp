@@ -28,11 +28,11 @@
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="Nombre"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:importantForAutofill="no" />
+        android:paddingEnd="20dp" />
 
     <EditText
         android:id="@+id/et_add_contact_number"

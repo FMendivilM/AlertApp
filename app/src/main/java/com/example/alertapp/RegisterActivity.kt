@@ -57,6 +57,7 @@ class RegisterActivity : AppCompatActivity() {
 
             if(!TextUtils.equals(password, passwordConfirm)){
                 binding.etRegPassword.error = "Password mismatch"
+                return@setOnClickListener
             }
 
             fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){task->
@@ -64,12 +65,11 @@ class RegisterActivity : AppCompatActivity() {
                     val userId = fAuth.currentUser?.uid
                     val user = User(userId!!,userName,email,password)
                     val userData = HashMap<String, Any>()
-                    userData["id"] = user.getId()
                     userData["userName"] = user.getUserName()
                     userData["email"] = user.getEmail()
                     userData["password"] = user.getPassword()
 
-                    dataBase.child("userData").child(userId).setValue(userData)
+                    dataBase.child("userData").child(userId).child("data").setValue(userData)
                     Toast.makeText(applicationContext, "User successfully registered", Toast.LENGTH_LONG).show()
                     val i = Intent(applicationContext, MainActivity::class.java)
                     startActivity(i)

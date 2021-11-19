@@ -92,7 +92,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.account->{
-
+                val i = Intent(applicationContext, UserActivity::class.java)
+                startActivity(i)
             }
             R.id.contacts->{
                 val i = Intent(applicationContext, ContactListActivity::class.java)
@@ -107,9 +108,16 @@ class MainActivity : AppCompatActivity() {
 
             }
             R.id.log_out->{
-
+                logOut()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logOut(){
+        fAuth.signOut()
+        val i = Intent(applicationContext, LoginActivity::class.java)
+        startActivity(i)
+        finish()
     }
 }

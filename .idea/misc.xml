@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/ic_account_big.xml" value="0.2203125" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/ic_alert_big.xml" value="0.2203125" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.2203125" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/drawable/ic_contact_big.xml" value="0.2203125" />
@@ -21,6 +22,8 @@
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_user.xml" value="0.25" />
+        <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/activity_user_edit.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/fragment_alert.xml" value="0.22" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/fragment_contacts.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/USUARIO/AndroidStudioProjects/AlertApp/app/src/main/res/layout/fragment_map.xml" value="0.1956521739130435" />

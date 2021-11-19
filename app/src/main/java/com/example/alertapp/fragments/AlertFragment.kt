@@ -115,10 +115,11 @@ class AlertFragment : Fragment() {
 
             dataBase.child("userData").child(fAuth.currentUser!!.uid).child("myAlert").addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    canAccessLocation = snapshot.child("locationPermission").value as Boolean
-                    canMarkLocation = snapshot.child("markZonePermission").value as Boolean
-                    canSendMessage = snapshot.child("messagePermission").value as Boolean
-
+                    if(snapshot.exists()){
+                        canAccessLocation = snapshot.child("locationPermission").value as Boolean
+                        canMarkLocation = snapshot.child("markZonePermission").value as Boolean
+                        canSendMessage = snapshot.child("messagePermission").value as Boolean
+                    }
 
                     if(snapshot.child("contacts").exists()){
                         for(i in 0.. snapshot.child("contacts").childrenCount){
@@ -155,7 +156,7 @@ class AlertFragment : Fragment() {
                                 dataBase.child("publicAlerts").child(count.toString()).setValue(alertInfo).addOnCompleteListener{task->
                                     if(task.isSuccessful){
                                         vibrate()
-                                        Toast.makeText(context, "Alert sent", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(context, "Alert sent", Toast.LENGTH_LONG).show()
                                     }
                                 }
                             }
@@ -177,7 +178,10 @@ class AlertFragment : Fragment() {
                                     )
                             }
                         }
+                    }
 
+                    if(!canMarkLocation && !canAccessLocation && !canSendMessage){
+                        Toast.makeText(context, "Ve a configuración de alerta", Toast.LENGTH_LONG).show()
                     }
                 }
 
