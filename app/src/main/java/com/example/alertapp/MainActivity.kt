@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.alertapp.fragments.AlertFragment
 import com.example.alertapp.databinding.ActivityMainBinding
 import com.example.alertapp.fragments.MapFragment
-import com.example.alertapp.fragments.RouteFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -70,9 +69,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.map->{
                     selectedFragment = MapFragment.newInstance()
-                }
-                R.id.route->{
-                    selectedFragment = RouteFragment.newInstance()
                 }
             }
 

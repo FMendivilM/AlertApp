@@ -11,9 +11,4 @@
         android:icon="@drawable/ic_location"
         android:title="Mapa"/>
 
-    <item
-        android:id="@+id/route"
-        android:icon="@drawable/ic_route"
-        android:title="Ruta"/>
-
 </menu>

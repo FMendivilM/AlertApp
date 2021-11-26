@@ -19,10 +19,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.alertapp.databinding.FragmentAlertBinding
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,7 +36,7 @@ import kotlin.collections.HashMap
 class AlertFragment : Fragment() {
     private var _binding: FragmentAlertBinding? = null
     private val binding get() = _binding!!
-    lateinit var locationManager: LocationManager
+    private lateinit var locationManager: LocationManager
     private var hasGps = false
     private var hasNetwork = false
     private var locationGps: Location? = null
@@ -130,9 +128,6 @@ class AlertFragment : Fragment() {
 
                     if(snapshot.child("message").exists()){
                         message = snapshot.child("message").value.toString()
-                        if(canAccessLocation){
-                            message = "$message latitude: $latitude, longitude: $longitude"
-                        }
                     }
 
                     if(canMarkLocation){
@@ -148,7 +143,7 @@ class AlertFragment : Fragment() {
                         dataBase.addListenerForSingleValueEvent(object: ValueEventListener{
                             @RequiresApi(Build.VERSION_CODES.S)
                             override fun onDataChange(snapshot: DataSnapshot) {
-                                var count: Int = 0
+                                var count = 0
                                 if(snapshot.child("publicAlerts").exists()){
                                     count = snapshot.child("publicAlerts").childrenCount.toInt()
                                 }
@@ -172,7 +167,7 @@ class AlertFragment : Fragment() {
                             for(i in contactNumberList){
                                 smsManager.sendTextMessage(i,
                                     null,
-                                    message,
+                                    "$message latitude: $latitude, longitude: $longitude",
                                     null,
                                     null
                                     )
