@@ -25,6 +25,9 @@ class UserEditActivity : AppCompatActivity() {
         binding = ActivityUserEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Editar usuario"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         fAuth = FirebaseAuth.getInstance()
         dataBase = Firebase.database.reference
 

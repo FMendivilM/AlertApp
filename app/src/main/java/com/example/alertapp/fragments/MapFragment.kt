@@ -212,8 +212,16 @@ class MapFragment : Fragment() , OnMapReadyCallback{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
                     for(i in 0 until snapshot.childrenCount){
-                        val lat = snapshot.child(i.toString()).child("latitude").value as Double
-                        val long = snapshot.child(i.toString()).child("longitude").value as Double
+                        var lat = 0.00
+                        var long = 0.00
+                        if(snapshot.child(i.toString()).child("latitude").value is Double){
+                            lat = snapshot.child(i.toString()).child("latitude").value as Double
+                        }
+                        if(snapshot.child(i.toString()).child("longitude").value is Double){
+                            long = snapshot.child(i.toString()).child("longitude").value as Double
+                        }else{
+                            dataBase.child("publicAlerts").child(i.toString()).removeValue()
+                        }
                         val message = snapshot.child(i.toString()).child("message").value.toString()
                         val time = snapshot.child(i.toString()).child("time").value.toString()
                         map.addMarker(MarkerOptions()

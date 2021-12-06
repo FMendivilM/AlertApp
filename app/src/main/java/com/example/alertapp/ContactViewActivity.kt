@@ -25,6 +25,9 @@ class ContactViewActivity : AppCompatActivity() {
         val binding = ActivityContactViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Contacto"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
         fAuth = FirebaseAuth.getInstance()
         db = Firebase.database.reference
 

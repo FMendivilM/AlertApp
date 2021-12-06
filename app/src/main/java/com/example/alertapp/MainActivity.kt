@@ -3,6 +3,7 @@ package com.example.alertapp
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         fAuth = FirebaseAuth.getInstance()
         dataBase = Firebase.database.reference
+
+        Log.e("hey","hey")
 
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION)!=
             PackageManager.PERMISSION_GRANTED &&
@@ -101,7 +104,8 @@ class MainActivity : AppCompatActivity() {
 
             }
             R.id.false_call->{
-
+                val i = Intent(applicationContext, FalseCallOptionsActivity:: class.java)
+                startActivity(i)
             }
             R.id.log_out->{
                 logOut()

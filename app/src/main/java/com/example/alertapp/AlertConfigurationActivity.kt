@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.alertapp.databinding.ActivityAlertConfigurationBinding
+import com.example.alertapp.entities.Contact
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,8 +24,10 @@ class AlertConfigurationActivity : AppCompatActivity() {
     private lateinit var fAuth: FirebaseAuth
     private lateinit var dataBase : DatabaseReference
     private lateinit var binding: ActivityAlertConfigurationBinding
-    val contactList = ArrayList<String>()
-    val contactNumberList = ArrayList<String>()
+    val contactList = ArrayList<Contact>()
+    val contactNameList = ArrayList<String>()
+    private val selectedNameList = ArrayList<String>()
+    private val selectedContactList = ArrayList<Contact>()
     private val spinnerList = ArrayList<Spinner>()
     private var canSendMessage = true
     private var canAccessLocation = true
@@ -36,6 +39,9 @@ class AlertConfigurationActivity : AppCompatActivity() {
 
         fAuth = FirebaseAuth.getInstance()
         dataBase = Firebase.database.reference
+
+        supportActionBar?.title = "Configuración de alerta"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
 
         if(ActivityCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -68,11 +74,18 @@ class AlertConfigurationActivity : AppCompatActivity() {
                     val objSnapshot = snapshot.child("myAlert")
                     if(objSnapshot.child("message").exists()){
                         binding.editTextMessage.setText(objSnapshot.child("message").value.toString())
+
                     }
                     binding.checkBoxLocation.isChecked = objSnapshot.child("locationPermission").value as Boolean
                     binding.checkBoxZoneMark.isChecked = objSnapshot.child("markZonePermission").value as Boolean
 
                     binding.checkBoxMessage.isChecked = objSnapshot.child("messagePermission").value as Boolean
+
+                    if(objSnapshot.child("contactsList").exists()){
+                        for( i in 0 until objSnapshot.child("contactsList").childrenCount){
+                            addSpinner()
+                        }
+                    }
 
 
                 }
@@ -82,9 +95,7 @@ class AlertConfigurationActivity : AppCompatActivity() {
 
         })
 
-        binding.textViewAddContact.setOnClickListener{
-            addSpinner()
-        }
+        binding.textViewAddContact.setOnClickListener{ addSpinner() }
 
         binding.btnSave.setOnClickListener {
             val contactInfo: HashMap<String, Any> = HashMap()
@@ -96,10 +107,31 @@ class AlertConfigurationActivity : AppCompatActivity() {
             }else{
                 contactInfo["message"] = ""
             }
-            if(contactNumberList.size > 0){
-                contactNumberList.removeAt(0)
-                contactInfo["contactsList"] = contactNumberList
+
+
+
+            if(contactNameList.size > 1){
+                for(i in 0 until spinnerList.size){
+                    if(!selectedNameList.contains(spinnerList[i].selectedItem.toString())
+                        && spinnerList[i].selectedItem.toString() != "Ninguno"){
+                        selectedNameList.add(spinnerList[i].selectedItem.toString())
+                    }
+
+                }
+
+                for (i in 0 until contactNameList.size){
+                    if(selectedNameList.contains(contactNameList[i])){
+                        if(!selectedContactList.contains(contactList[i])){
+                            selectedContactList.add(contactList[i])
+                        }
+                    }
+                }
+
+                contactInfo["contactsList"] = selectedContactList
             }
+
+
+
             dataBase.child("userData").child(fAuth.currentUser!!.uid).child("myAlert").setValue(contactInfo)
 
             finish()
@@ -122,33 +154,51 @@ class AlertConfigurationActivity : AppCompatActivity() {
 
         lateinit var contactName:String
         lateinit var contactNumber: String
-        contactList.clear()
-        contactNumberList.clear()
-        contactList.add("None")
-        contactNumberList.add("")
+
+
+        if(!contactNameList.contains("Ninguno")){
+            contactNameList.add("Ninguno")
+            contactList.add(Contact("",""))
+        }
 
         dataBase.child("userData").child(fAuth.currentUser!!.uid).addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.child("contacts").exists()){
-                    for(objSnapshot: DataSnapshot in snapshot.child("contacts").children){
+                if (snapshot.child("contacts").exists()) {
+                    for (objSnapshot: DataSnapshot in snapshot.child("contacts").children) {
+
                         contactName = objSnapshot.child("name").value.toString()
                         contactNumber = objSnapshot.child("number").value.toString()
-                        if(!contactList.contains(contactName)){
-                            contactList.add(contactName)
-                        }
-                        if(!contactNumberList.contains(contactNumber)){
-                            contactNumberList.add(contactNumber)
-                        }
 
-
+                        val contact = Contact(contactName, contactNumber)
+                        if (!contactNameList.contains(contactName)) {
+                            contactList.add(contact)
+                            contactNameList.add(contactName)
+                        }
                     }
                 }
-                val alertContacts = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, contactList)
+                val alertContacts = ArrayAdapter(
+                    applicationContext,
+                    android.R.layout.simple_spinner_item,
+                    contactNameList
+                )
+
                 alertContacts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 selectedSpinner.adapter = alertContacts
+                val auxNameList = ArrayList<String>()
+                if(snapshot.child("myAlert").child("contactsList").exists()){
+                    val nameSnapshot = snapshot.child("myAlert").child("contactsList")
+                    for(i in 0 until nameSnapshot.childrenCount){
+                        auxNameList.add(nameSnapshot.child(i.toString()).child("contactName").value.toString())
+                    }
+                }
 
+                for(i in 0 until auxNameList.size){
+                    val pos = alertContacts.getPosition(auxNameList[i])
+                    if(spinnerList[i].selectedItem == "Ninguno"){
+                        spinnerList[i].setSelection(pos)
+                    }
+                }
             }
-
             override fun onCancelled(error: DatabaseError) {}
         })
     }

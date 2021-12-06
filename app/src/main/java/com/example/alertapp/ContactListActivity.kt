@@ -30,6 +30,9 @@ class ContactListActivity : AppCompatActivity() {
         binding = ActivityContactListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Contactos"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
         recyclerViewContacts = binding.recyclerViewContacts
 
         fAuth = FirebaseAuth.getInstance()

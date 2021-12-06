@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_dark_blue"
+    tools:context=".FalseCallActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@drawable/ic_account_big" />
+
+    <TextView
+        android:id="@+id/tv_false_call_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="PersonName"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="40sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_call_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/app_green"
+        android:drawableStart="@drawable/ic_call_accept"
+        android:minWidth="100dp"
+        android:minHeight="100dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_call_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/app_red"
+        android:drawableStart="@drawable/ic_call_end"
+        android:minWidth="100dp"
+        android:minHeight="100dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        tools:ignore="RelativeOverlap,SpeakableTextPresentCheck" />
+</RelativeLayout>

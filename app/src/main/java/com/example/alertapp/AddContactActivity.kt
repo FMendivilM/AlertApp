@@ -29,13 +29,15 @@ class AddContactActivity : AppCompatActivity() {
         val binding = ActivityAddContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Add contact"
+        supportActionBar?.title = "Agregar contacto"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
         fAuth = FirebaseAuth.getInstance()
         db = Firebase.database.reference
 
         val editing: Boolean = intent.getStringExtra("number") != null
         if(editing){
+            supportActionBar?.title = "Editar contacto"
             binding.etAddContactName.setText(intent.getStringExtra("name"))
             binding.etAddContactNumber.setText(intent.getStringExtra("number"))
             binding.btnAddContact.text = "Save"
@@ -43,7 +45,7 @@ class AddContactActivity : AppCompatActivity() {
         }
 
         binding.btnAddContact.setOnClickListener{
-            var contactInfo: HashMap<String, Any> = HashMap<String, Any>()
+            var contactInfo: HashMap<String, Any> = HashMap()
 
             if(TextUtils.isEmpty(binding.etAddContactName.text.toString())){
                 binding.etAddContactNumber.error = "Name is required"
@@ -96,7 +98,7 @@ class AddContactActivity : AppCompatActivity() {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
                                 finish()
                             }else{
-                                Toast.makeText(applicationContext, task.exception.toString(), Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, task.exception!!.message, Toast.LENGTH_LONG).show()
                             }
                         }
                     }

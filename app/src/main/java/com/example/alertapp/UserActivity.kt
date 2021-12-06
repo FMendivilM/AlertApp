@@ -31,6 +31,9 @@ class UserActivity : AppCompatActivity() {
         binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Usuario"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
         fAuth = FirebaseAuth.getInstance()
         dataBase = Firebase.database.reference
 

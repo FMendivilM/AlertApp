@@ -119,9 +119,9 @@ class AlertFragment : Fragment() {
                         canSendMessage = snapshot.child("messagePermission").value as Boolean
                     }
 
-                    if(snapshot.child("contacts").exists()){
-                        for(i in 0.. snapshot.child("contacts").childrenCount){
-                            contactNumberList.add(snapshot.child("contacts").child(i.toString()).value.toString())
+                    if(snapshot.child("contactsList").exists()){
+                        for(i in 0.. snapshot.child("contactsList").childrenCount){
+                            contactNumberList.add(snapshot.child("contactsList").child(i.toString()).child("phoneNumber").value.toString())
                         }
 
                     }
@@ -134,7 +134,9 @@ class AlertFragment : Fragment() {
                         val alertInfo: HashMap<String, Any> = HashMap()
                         alertInfo["latitude"] = latitude
                         alertInfo["longitude"] = longitude
-                        alertInfo["message"] = message
+                        if(canSendMessage){
+                            alertInfo["message"] = message
+                        }
                         val calendar = Calendar.getInstance()
                         val date = calendar.time
                         val timeFormat : String = dateFormat.format(date)
